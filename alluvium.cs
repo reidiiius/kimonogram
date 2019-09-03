@@ -2,7 +2,7 @@
 using System;
 using System.Collections;
 
-namespace MonoGramophon {
+namespace Kimonogram {
 
   class Alluvium {
 
@@ -91,9 +91,11 @@ namespace MonoGramophon {
  {"k1j56y7", "dd ux yt dd ov qq vo dd ty xu dd dd "},
  {"k2j56y7", "yr dd dd qz vv zq to dd ry wu dd dd "}};
 
+
     static string Retrieve(string k) {
       return (string) digraphs[k];
     }
+
 
     static string PegBox(string s, int n) {
       string head, tail;
@@ -102,61 +104,73 @@ namespace MonoGramophon {
       return head + tail;
     }
 
+
     static string Bj(string s) {
       return PegBox(s, 30);
     }
+
 
     static string Fn(string s) {
       return PegBox(s, 15);
     }
 
+
     static string Cn(string s) {
       return PegBox(s, 0);
     }
+
 
     static string Gn(string s) {
       return PegBox(s, 21);
     }
 
+
     static string Dn(string s) {
       return PegBox(s, 6);
     }
+
 
     static string An(string s) {
       return PegBox(s, 27);
     }
 
+
     static string En(string s) {
       return PegBox(s, 12);
     }
+
 
     static string Bn(string s) {
       return PegBox(s, 33);
     }
 
+
     static string Fk(string s) {
       return PegBox(s, 18);
     }
 
+
     static void HeadStock(string signat, string sargam, string diadem)
     {
+      string caption = string.Format("{0}-ennead-m{1}", signat, diadem);
       string[] ennead = {
-        "\t" + signat + "-m" + diadem,
-        "\t" + Bj(sargam),
-        "\t" + Fn(sargam),
-        "\t" + Cn(sargam),
-        "\t" + Gn(sargam),
-        "\t" + Dn(sargam),
-        "\t" + An(sargam),
-        "\t" + En(sargam),
-        "\t" + Bn(sargam),
-        "\t" + Fk(sargam)
+        caption,
+        Bj(sargam),
+        Fn(sargam),
+        Cn(sargam),
+        Gn(sargam),
+        Dn(sargam),
+        An(sargam),
+        En(sargam),
+        Bn(sargam),
+        Fk(sargam)
       }; 
 
       for (int i = 0; i < ennead.Length; i++) {
-        Console.WriteLine(ennead[i]);
+        Console.WriteLine("\t" + ennead[i]);
       }
     }
+
 
     static void Setable() {
       string mute, tacet;
@@ -165,6 +179,7 @@ namespace MonoGramophon {
 
       digraphs.Add("z0", tacet);
     }
+
 
     static void ShowMenu() {
       string[] clave = new string[84];
@@ -187,6 +202,7 @@ namespace MonoGramophon {
       }
       Console.WriteLine("\n"); 
     }
+
 
     static void Main(string[] args) {
       Console.BackgroundColor = ConsoleColor.Black;
@@ -223,6 +239,6 @@ namespace MonoGramophon {
 
   } // Alluvium
 
-} // MonoGramophon
+} // Kimonogram
 
 
