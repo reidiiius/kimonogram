@@ -93,7 +93,9 @@ namespace Kimonogram {
 
 
     static string Retrieve(string k) {
-      return (string) digraphs[k];
+      object o = digraphs[k];
+      string s = o.ToString();
+      return s;
     }
 
 
@@ -167,7 +169,7 @@ namespace Kimonogram {
       }; 
 
       for (int i = 0; i < ennead.Length; i++) {
-        Console.WriteLine("\t" + ennead[i]);
+        Console.WriteLine("\t{0}", ennead[i]);
       }
     }
 
@@ -182,9 +184,11 @@ namespace Kimonogram {
 
 
     static void ShowMenu() {
-      string[] clave = new string[84];
+      uint cycle;
+      int recs = digraphs.Count;
+      string[] clave = new string[recs];
 
-      uint cycle = 0;
+      cycle = 0;
       foreach (string item in digraphs.Keys) {
         clave[cycle] = item;
         cycle += 1;
@@ -192,13 +196,13 @@ namespace Kimonogram {
 
       Array.Sort(clave);
 
-      uint count = 0;
+      cycle = 0;
       foreach (string element in clave) {
-        if (count % 7 == 0 ) {
+        if (cycle % 7 == 0 ) {
           Console.Write("\n");
         }
-        Console.Write("\t" + element);
-        count += 1;
+        Console.Write("\t{0}", element);
+        cycle += 1;
       }
       Console.WriteLine("\n"); 
     }
@@ -228,7 +232,7 @@ namespace Kimonogram {
             HeadStock(signat, sargam, diadem);
           }
           else {
-            Console.WriteLine("\n\t" + signat + " ?");
+            Console.WriteLine("\n\t{0} ?", signat);
           }
         }
         Console.WriteLine();
