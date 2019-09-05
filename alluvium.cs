@@ -6,7 +6,7 @@ namespace Kimonogram {
 
   class Alluvium {
 
-    static private Hashtable digraphs = new Hashtable() {
+    public Hashtable digraphs = new Hashtable() {
       {"j2", "vv zq dd dd ry wu dd uw dd sx dd qz "},
       {"j3", "vt dd tv xq dd ws dd uu dd sw dd qx "},
       {"j5", "wr dd ut dd sv oq qo dd dd tu dd rw "},
@@ -92,9 +92,8 @@ namespace Kimonogram {
  {"k2j56y7", "yr dd dd qz vv zq to dd ry wu dd dd "}};
 
 
-    static string Retrieve(string k) {
-      object o = digraphs[k];
-      string s = o.ToString();
+    public string Retrieve(string k) {
+      string s = digraphs[k].ToString();
       return s;
     }
 
@@ -152,7 +151,7 @@ namespace Kimonogram {
     }
 
 
-    static void HeadStock(string signat, string sargam, string diadem)
+    public void HeadStock(string signat, string sargam, string diadem)
     {
       string caption = string.Format("{0}-ennead-m{1}", signat, diadem);
       string[] ennead = {
@@ -174,16 +173,16 @@ namespace Kimonogram {
     }
 
 
-    static void Setable() {
+    public void Setable() {
       string mute, tacet;
-      mute = "".PadLeft(36, '_');
+      mute = new string('_', 36);
       tacet = mute.Replace("___", "__ ");
 
       digraphs.Add("z0", tacet);
     }
 
 
-    static void ShowMenu() {
+    public void ShowMenu() {
       uint cycle;
       int recs = digraphs.Count;
       string[] clave = new string[recs];
@@ -207,39 +206,6 @@ namespace Kimonogram {
       Console.WriteLine("\n"); 
     }
 
-
-    static void Main(string[] args) {
-      Console.BackgroundColor = ConsoleColor.Black;
-      Console.ForegroundColor = ConsoleColor.Green;
- 
-      Setable();
-
-      if (args.Length == 0) {
-        ShowMenu();
-      }
-      else {
-        string datum, sargam, diadem;
-        DateTime stamp = DateTime.Now;
-        diadem = stamp.ToString("yyyyMMddTHHmmss");
-
-        foreach (string signat in args)
-        {
-          if (digraphs.ContainsKey(signat)) {
-            datum = Retrieve(signat);
-            sargam = datum.Replace("dd", "__");
-
-            Console.WriteLine();
-            HeadStock(signat, sargam, diadem);
-          }
-          else {
-            Console.WriteLine("\n\t{0} ?", signat);
-          }
-        }
-        Console.WriteLine();
-      }
-
-      Console.ResetColor();
-    } // Main
 
   } // Alluvium
 

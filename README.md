@@ -14,7 +14,7 @@ Command-line
 
         cd kimonogram/
 
-        mcs -out:cobblestone.exe alluvium.cs 
+        mcs -out:cobblestone.exe -main:JinBei *.cs
 
         mono cobblestone.exe
 
