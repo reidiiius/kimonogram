@@ -98,6 +98,22 @@ namespace Kimonogram {
     }
 
 
+    static string Ziltch() {
+      string mute, tacet;
+      mute = new string('_', 36);
+      tacet = mute.Replace("___", "__ ");
+      return tacet;
+    }
+
+
+    static string HoroLog() {
+      string serial;
+      DateTime stamp = DateTime.Now;
+      serial = stamp.ToString("yyyyMMddTHHmmss");
+      return serial;
+    }
+
+
     static string PegBox(string s, int n) {
       string head, tail;
       head = s.Substring(n, (s.Length - n));
@@ -151,7 +167,7 @@ namespace Kimonogram {
     }
 
 
-    public void HeadStock(string signat, string sargam, string diadem)
+    static void HeadStock(string signat, string sargam, string diadem)
     {
       string caption = string.Format("{0}-ennead-m{1}", signat, diadem);
       string[] ennead = {
@@ -173,12 +189,34 @@ namespace Kimonogram {
     }
 
 
-    public void Setable() {
-      string mute, tacet;
-      mute = new string('_', 36);
-      tacet = mute.Replace("___", "__ ");
+    public void LatticeWork() {
+      Console.WriteLine();
+      HeadStock("z0", Ziltch(), HoroLog()); 
+    }
 
-      digraphs.Add("z0", tacet);
+
+    public void LatticeWork(string[] argot) {
+      string datum, sargam, diadem;
+      diadem = HoroLog();
+
+      foreach (string signat in argot)
+      {
+        if (digraphs.ContainsKey(signat)) {
+          datum = Retrieve(signat);
+          sargam = datum.Replace("dd", "__");
+
+          Console.WriteLine();
+          HeadStock(signat, sargam, diadem);
+        }
+        else {
+          Console.WriteLine("\n\t{0} ?", signat);
+        }
+      }
+    }
+ 
+
+    public void Setable() {
+      digraphs.Add("z0", Ziltch());
     }
 
 

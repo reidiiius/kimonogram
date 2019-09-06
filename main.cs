@@ -9,29 +9,14 @@ using Kimonogram;
       Console.ForegroundColor = ConsoleColor.Green;
 
       Alluvium Pebbles = new Alluvium();
+
       Pebbles.Setable();
 
       if (args.Length == 0) {
         Pebbles.ShowMenu();
       }
       else {
-        string datum, sargam, diadem;
-        DateTime stamp = DateTime.Now;
-        diadem = stamp.ToString("yyyyMMddTHHmmss");
-
-        foreach (string signat in args)
-        {
-          if (Pebbles.digraphs.ContainsKey(signat)) {
-            datum = Pebbles.Retrieve(signat);
-            sargam = datum.Replace("dd", "__");
-
-            Console.WriteLine();
-            Pebbles.HeadStock(signat, sargam, diadem);
-          }
-          else {
-            Console.WriteLine("\n\t{0} ?", signat);
-          }
-        }
+        Pebbles.LatticeWork(args);
         Console.WriteLine();
       }
 
