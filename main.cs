@@ -8,15 +8,16 @@ using Kimonogram;
       Console.BackgroundColor = ConsoleColor.Black;
       Console.ForegroundColor = ConsoleColor.Green;
 
-      Alluvium Pebbles = new Alluvium();
+      Instrument Chordophone = new Instrument();
 
-      Pebbles.Setable();
+      Chordophone.Setable();
+      Chordophone.Neptune("eadgbe");
 
       if (args.Length == 0) {
-        Pebbles.ShowMenu();
+        Chordophone.ShowMenu();
       }
       else {
-        Pebbles.LatticeWork(args);
+        Chordophone.LatticeWork(args);
         Console.WriteLine();
       }
 

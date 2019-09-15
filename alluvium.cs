@@ -6,6 +6,8 @@ namespace Kimonogram {
 
   class Alluvium {
 
+    public static string pitchfork;
+
     public Hashtable digraphs = new Hashtable() {
       {"j2", "vv zq dd dd ry wu dd uw dd sx dd qz "},
       {"j3", "vt dd tv xq dd ws dd uu dd sw dd qx "},
@@ -167,11 +169,78 @@ namespace Kimonogram {
     }
 
 
-    static void HeadStock(string signat, string sargam, string diadem)
+    static string[] Triton(string sargam)
     {
-      string caption = string.Format("{0}-ennead-m{1}", signat, diadem);
-      string[] ennead = {
-        caption,
+      string sBn, sFn;
+      sFn = Fn(sargam);
+      sBn = Bn(sargam); 
+
+      string[] arrows = {
+        sBn,
+        sFn,
+        sBn, 
+        sFn,
+        sBn
+      }; 
+
+      return arrows;
+    }
+
+
+    static string[] Cello(string sargam)
+    {
+      string[] arrows = {
+        En(sargam),
+        An(sargam),
+        Dn(sargam),
+        Gn(sargam),
+        Cn(sargam)
+      }; 
+
+      return arrows;
+    }
+
+
+    static string[] Guitar(string sargam)
+    {
+      string sEn = En(sargam);
+
+      string[] arrows = {
+        sEn,
+        Bn(sargam),
+        Gn(sargam),
+        Dn(sargam),
+        An(sargam),
+        sEn
+      }; 
+
+      return arrows;
+    }
+
+
+    static string[] Maj3rds(string sargam)
+    {
+      string sDn, sBj, sFk;
+      sDn = Dn(sargam);
+      sBj = Bj(sargam);
+      sFk = Fk(sargam);
+ 
+      string[] arrows = {
+        sDn,
+        sBj,
+        sFk,
+        sDn,
+        sBj,
+        sFk
+      }; 
+
+      return arrows;
+    }
+
+
+    static string[] Ennead(string sargam)
+    {
+      string[] arrows = {
         Bj(sargam),
         Fn(sargam),
         Cn(sargam),
@@ -183,8 +252,44 @@ namespace Kimonogram {
         Fk(sargam)
       }; 
 
-      for (int i = 0; i < ennead.Length; i++) {
-        Console.WriteLine("\t{0}", ennead[i]);
+      return arrows;
+    }
+
+
+    static void HeadStock(string signat, string sargam, string diadem)
+    {
+      string[] arrows;
+
+      switch(pitchfork)
+      {
+        case "bfbfb":
+          arrows = Triton(sargam);
+          break;
+
+        case "cgdae":
+          arrows = Cello(sargam);
+          break;
+
+        case "eadgbe":
+          arrows = Guitar(sargam);
+          break;
+ 
+        case "fkbjdn":
+          arrows = Maj3rds(sargam);
+          break;
+
+        default:
+          pitchfork = "P4";
+          arrows = Ennead(sargam);
+          break;
+      }
+
+      string caption = string.Format("{0}-{1}-m{2}", signat, pitchfork, diadem);
+
+      Console.WriteLine("\t{0}", caption);
+
+      for (int i = 0; i < arrows.Length; i++) {
+        Console.WriteLine("\t{0}", arrows[i]);
       }
     }
 
@@ -212,6 +317,16 @@ namespace Kimonogram {
           Console.WriteLine("\n\t{0} ?", signat);
         }
       }
+    }
+
+
+    public void Neptune() {
+      pitchfork = "";
+    }
+ 
+
+    public void Neptune(string s) {
+      pitchfork = s;
     }
  
 
@@ -246,6 +361,8 @@ namespace Kimonogram {
 
 
   } // Alluvium
+
+  class Instrument : Alluvium {}
 
 } // Kimonogram
 
