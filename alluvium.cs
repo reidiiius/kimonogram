@@ -321,7 +321,7 @@ namespace Kimonogram {
 
 
     public void Neptune() {
-      pitchfork = "";
+      pitchfork = String.Empty;
     }
  
 
@@ -366,7 +366,7 @@ namespace Kimonogram {
   class Instrument : Alluvium {
 
     public Instrument() {
-      this.Neptune(String.Empty);
+      this.Neptune();
       this.Salacia();
     }
 
