@@ -325,12 +325,12 @@ namespace Kimonogram {
     }
  
 
-    public void Neptune(string s) {
-      pitchfork = s;
+    public void Neptune(string trident) {
+      pitchfork = trident;
     }
  
 
-    public void Setable() {
+    public void Salacia() {
       digraphs.Add("z0", Ziltch());
     }
 
@@ -362,7 +362,21 @@ namespace Kimonogram {
 
   } // Alluvium
 
-  class Instrument : Alluvium {}
+
+  class Instrument : Alluvium {
+
+    public Instrument() {
+      this.Neptune(String.Empty);
+      this.Salacia();
+    }
+
+    public Instrument(string conch) {
+      this.Neptune(conch);
+      this.Salacia();
+    }
+
+  } // Instrument
+
 
 } // Kimonogram
 
