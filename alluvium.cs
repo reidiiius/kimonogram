@@ -100,7 +100,7 @@ namespace Kimonogram {
     }
 
 
-    static string Ziltch() {
+    public string Ziltch() {
       string mute, tacet;
       mute = new string('_', 36);
       tacet = mute.Replace("___", "__ ");
@@ -308,7 +308,14 @@ namespace Kimonogram {
       {
         if (digraphs.ContainsKey(signat)) {
           datum = Retrieve(signat);
-          sargam = datum.Replace("dd", "__");
+
+          if (datum.Length < 36) {
+            datum = Ziltch();
+            sargam = datum.Replace('_', '-');
+          }
+          else {
+            sargam = datum.Replace("dd", "__");
+          }
 
           Console.WriteLine();
           HeadStock(signat, sargam, diadem);
@@ -331,7 +338,24 @@ namespace Kimonogram {
  
 
     public void Salacia() {
-      digraphs.Add("z0", Ziltch());
+      string signat = "z0";
+      if (!digraphs.ContainsKey(signat)) {
+        digraphs.Add(signat, Ziltch());
+      }
+    }
+
+
+    public void Salacia(string signat) {
+      if (!digraphs.ContainsKey(signat)) {
+        digraphs.Add(signat, String.Empty);
+      }
+    }
+
+
+    public void Salacia(string signat, string datum) {
+      if (!digraphs.ContainsKey(signat)) {
+        digraphs.Add(signat, datum);
+      }
     }
 
 
