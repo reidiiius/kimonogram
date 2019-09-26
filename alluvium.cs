@@ -120,7 +120,7 @@ namespace Kimonogram {
       string head, tail;
       head = s.Substring(n, (s.Length - n));
       tail = s.Substring(0, (n + 2));
-      return head + tail;
+      return String.Concat(head, tail);
     }
 
 
@@ -169,13 +169,13 @@ namespace Kimonogram {
     }
 
 
-    static string[] Triton(string sargam)
+    static string[] Triton(string s)
     {
       string sBn, sFn;
-      sFn = Fn(sargam);
-      sBn = Bn(sargam); 
+      sFn = Fn(s);
+      sBn = Bn(s); 
 
-      string[] arrows = {
+      string[] a = {
         sBn,
         sFn,
         sBn, 
@@ -183,49 +183,49 @@ namespace Kimonogram {
         sBn
       }; 
 
-      return arrows;
+      return a;
     }
 
 
-    static string[] Cello(string sargam)
+    static string[] Cello(string s)
     {
-      string[] arrows = {
-        En(sargam),
-        An(sargam),
-        Dn(sargam),
-        Gn(sargam),
-        Cn(sargam)
+      string[] a = {
+        En(s),
+        An(s),
+        Dn(s),
+        Gn(s),
+        Cn(s)
       }; 
 
-      return arrows;
+      return a;
     }
 
 
-    static string[] Guitar(string sargam)
+    static string[] Guitar(string s)
     {
-      string sEn = En(sargam);
+      string sEn = En(s);
 
-      string[] arrows = {
+      string[] a = {
         sEn,
-        Bn(sargam),
-        Gn(sargam),
-        Dn(sargam),
-        An(sargam),
+        Bn(s),
+        Gn(s),
+        Dn(s),
+        An(s),
         sEn
       }; 
 
-      return arrows;
+      return a;
     }
 
 
-    static string[] Maj3rds(string sargam)
+    static string[] Maj3rds(string s)
     {
       string sDn, sBj, sFk;
-      sDn = Dn(sargam);
-      sBj = Bj(sargam);
-      sFk = Fk(sargam);
+      sDn = Dn(s);
+      sBj = Bj(s);
+      sFk = Fk(s);
  
-      string[] arrows = {
+      string[] a = {
         sDn,
         sBj,
         sFk,
@@ -234,25 +234,25 @@ namespace Kimonogram {
         sFk
       }; 
 
-      return arrows;
+      return a;
     }
 
 
-    static string[] Ennead(string sargam)
+    static string[] Ennead(string s)
     {
-      string[] arrows = {
-        Bj(sargam),
-        Fn(sargam),
-        Cn(sargam),
-        Gn(sargam),
-        Dn(sargam),
-        An(sargam),
-        En(sargam),
-        Bn(sargam),
-        Fk(sargam)
+      string[] a = {
+        Bj(s),
+        Fn(s),
+        Cn(s),
+        Gn(s),
+        Dn(s),
+        An(s),
+        En(s),
+        Bn(s),
+        Fk(s)
       }; 
 
-      return arrows;
+      return a;
     }
 
 
@@ -263,17 +263,22 @@ namespace Kimonogram {
       switch(pitchfork)
       {
         case "bfbfb":
+        case "sqrt2":
           arrows = Triton(sargam);
           break;
 
+        case "P5":
+        case "cello":
         case "cgdae":
           arrows = Cello(sargam);
           break;
 
         case "eadgbe":
+        case "guitar":
           arrows = Guitar(sargam);
           break;
  
+        case "M3":
         case "fkbjdn":
           arrows = Maj3rds(sargam);
           break;
@@ -333,7 +338,12 @@ namespace Kimonogram {
  
 
     public void Neptune(string trident) {
-      pitchfork = trident;
+      if (trident == null) {
+        pitchfork = String.Empty;
+      }
+      else {
+        pitchfork = trident;
+      }
     }
  
 

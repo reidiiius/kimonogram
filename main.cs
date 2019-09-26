@@ -8,7 +8,9 @@ using Kimonogram;
       Console.BackgroundColor = ConsoleColor.Black;
       Console.ForegroundColor = ConsoleColor.Green;
 
-      Instrument Chordophone = new Instrument("eadgbe");
+      string tuning = "eadgbe";
+
+      Instrument Chordophone = new Instrument(tuning);
 
       if (args.Length == 0) {
         Chordophone.ShowMenu();
