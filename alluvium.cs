@@ -256,38 +256,46 @@ namespace Kimonogram {
     }
 
 
-    static void HeadStock(string signat, string sargam, string diadem)
+    static string[] Quiver(string s)
     {
-      string[] arrows;
+      string[] a;
 
       switch(pitchfork)
       {
         case "bfbfb":
         case "sqrt2":
-          arrows = Triton(sargam);
+          a = Triton(s);
           break;
 
         case "P5":
         case "cello":
         case "cgdae":
-          arrows = Cello(sargam);
+          a = Cello(s);
           break;
 
         case "eadgbe":
         case "guitar":
-          arrows = Guitar(sargam);
+          a = Guitar(s);
           break;
  
         case "M3":
         case "fkbjdn":
-          arrows = Maj3rds(sargam);
+          a = Maj3rds(s);
           break;
 
         default:
           pitchfork = "P4";
-          arrows = Ennead(sargam);
+          a = Ennead(s);
           break;
       }
+
+      return a;
+    }
+
+
+    static void HeadStock(string signat, string sargam, string diadem)
+    {
+      string[] arrows = Quiver(sargam);
 
       string caption = string.Format("{0}-{1}-m{2}", signat, pitchfork, diadem);
 
