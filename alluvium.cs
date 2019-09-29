@@ -340,8 +340,6 @@ namespace Kimonogram {
     void ChalkBoard(string[] signs) {
       uint cycle = 0;
 
-      Console.Write("\t");
-
       foreach (string item in signs) {
         if (cycle % 7 == 0 ) {
           Console.Write("\n");
@@ -374,21 +372,24 @@ namespace Kimonogram {
 
 
     public void LatticeWork(string[] argot) {
-      string datum, sargam, diadem;
-      diadem = HoroLog();
+      StringBuilder datum;
+      string sargam, diadem;
 
       foreach (string signat in argot)
       {
         if (digraphs.ContainsKey(signat)) {
-          datum = Retrieve(signat);
+          datum = new StringBuilder(Retrieve(signat), 128);
 
           if (datum.Length < 36) {
-            datum = Ziltch();
-            sargam = datum.Replace('_', '-');
+            datum = new StringBuilder(Ziltch(), 128);
+            datum.Replace('_', '-');
           }
           else {
-            sargam = datum.Replace("dd", "__");
+            datum.Replace("dd", "__");
           }
+
+          sargam = datum.ToString();
+          diadem = HoroLog();
 
           Console.WriteLine();
           HeadStock(signat, sargam, diadem);
