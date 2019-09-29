@@ -1,14 +1,16 @@
 
 using System;
 using System.Collections;
+using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Kimonogram {
 
   class Alluvium {
 
-    public static string pitchfork;
+    string pitchfork;
 
-    public Hashtable digraphs = new Hashtable() {
+    Hashtable digraphs = new Hashtable() {
       {"j2", "vv zq dd dd ry wu dd uw dd sx dd qz "},
       {"j3", "vt dd tv xq dd ws dd uu dd sw dd qx "},
       {"j5", "wr dd ut dd sv oq qo dd dd tu dd rw "},
@@ -52,22 +54,22 @@ namespace Kimonogram {
     {"n6x2", "qr vp dd dd pv rq wo dd uy yu dd dd "},
    {"j17y2", "vs dd dd dd rw wr dd ut dd sv oq qo "},
    {"j23k6", "vv zq dd xs dd wu dd uw dd dd ot qz "},
-   {"j25y6", "or qp dd dd tv pq ro ws dd dd dd sw "},
+   {"j25y6", "or bows dd dd tv pq ro ws dd dd dd sw "},
    {"j26y3", "vv zq to dd dd wu dd uw yr dd dd qz "},
-   {"j2k34", "or qp dd dd dd pq ro ws dd uu dd sw "},
+   {"j2k34", "or bows dd dd dd pq ro ws dd uu dd sw "},
    {"j2k56", "vv zq dd dd ry wu dd dd yr dd ot qz "},
-   {"j34k6", "vt dd tv pq ro dd dd uu dd dd or qp "},
+   {"j34k6", "vt dd tv pq ro dd dd uu dd dd or bows "},
    {"j56y7", "xr dd wt dd uv yq so dd qy vu dd dd "},
    {"k12j5", "dd sx dd qz vv zq to dd dd wu dd uw "},
-   {"k17j5", "or qp vt dd tv pq ro dd dd uu dd dd "},
-   {"k2j17", "dd dd dd pq ro ws dd uu dd sw or qp "},
+   {"k17j5", "or bows vt dd tv pq ro dd dd uu dd dd "},
+   {"k2j17", "dd dd dd pq ro ws dd uu dd sw or bows "},
    {"k25x1", "dd dd ot qz vv zq dd dd ry wu dd uw "},
-   {"k26x5", "vt dd dd pq ro ws dd dd dd sw or qp "},
+   {"k26x5", "vt dd dd pq ro ws dd dd dd sw or bows "},
    {"k2j56", "yr dd dd qz vv zq to dd ry dd dd uw "},
    {"k34x2", "wr dd dd dd sv oq qo vs dd tu dd rw "},
    {"k56x4", "vu dd tw dd rx dd dd uv yq dd os qy "},
-   {"n25x6", "or qp vt dd dd pq ro ws dd dd dd sw "},
-   {"n26y5", "dd dd tv pq ro ws dd dd dd sw or qp "},
+   {"n25x6", "or bows vt dd dd pq ro ws dd dd dd sw "},
+   {"n26y5", "dd dd tv pq ro ws dd dd dd sw or bows "},
    {"n45y2", "vo dd dd xu dd ww dd ux yt dd ov qq "},
    {"n67x2", "dd ux dd dd ov qq vo dd ty xu dd ww "},
   {"j136y7", "dd dd tw xr dd wt dd uv yq so dd qy "},
@@ -94,13 +96,13 @@ namespace Kimonogram {
  {"k2j56y7", "yr dd dd qz vv zq to dd ry wu dd dd "}};
 
 
-    public string Retrieve(string k) {
+    string Retrieve(string k) {
       string s = digraphs[k].ToString();
       return s;
     }
 
 
-    public string Ziltch() {
+    string Ziltch() {
       string mute, tacet;
       mute = new string('_', 36);
       tacet = mute.Replace("___", "__ ");
@@ -108,7 +110,7 @@ namespace Kimonogram {
     }
 
 
-    static string HoroLog() {
+    string HoroLog() {
       string serial;
       DateTime stamp = DateTime.Now;
       serial = stamp.ToString("yyyyMMddTHHmmss");
@@ -116,7 +118,7 @@ namespace Kimonogram {
     }
 
 
-    static string PegBox(string s, int n) {
+    string PegBox(string s, int n) {
       string head, tail;
       head = s.Substring(n, (s.Length - n));
       tail = s.Substring(0, (n + 2));
@@ -124,52 +126,52 @@ namespace Kimonogram {
     }
 
 
-    static string Bj(string s) {
+    string Bj(string s) {
       return PegBox(s, 30);
     }
 
 
-    static string Fn(string s) {
+    string Fn(string s) {
       return PegBox(s, 15);
     }
 
 
-    static string Cn(string s) {
+    string Cn(string s) {
       return PegBox(s, 0);
     }
 
 
-    static string Gn(string s) {
+    string Gn(string s) {
       return PegBox(s, 21);
     }
 
 
-    static string Dn(string s) {
+    string Dn(string s) {
       return PegBox(s, 6);
     }
 
 
-    static string An(string s) {
+    string An(string s) {
       return PegBox(s, 27);
     }
 
 
-    static string En(string s) {
+    string En(string s) {
       return PegBox(s, 12);
     }
 
 
-    static string Bn(string s) {
+    string Bn(string s) {
       return PegBox(s, 33);
     }
 
 
-    static string Fk(string s) {
+    string Fk(string s) {
       return PegBox(s, 18);
     }
 
 
-    static string[] Triton(string s)
+    string[] Triton(string s)
     {
       string sBn, sFn;
       sFn = Fn(s);
@@ -187,7 +189,7 @@ namespace Kimonogram {
     }
 
 
-    static string[] Cello(string s)
+    string[] Cello(string s)
     {
       string[] a = {
         En(s),
@@ -201,7 +203,7 @@ namespace Kimonogram {
     }
 
 
-    static string[] Guitar(string s)
+    string[] Guitar(string s)
     {
       string sEn = En(s);
 
@@ -218,7 +220,7 @@ namespace Kimonogram {
     }
 
 
-    static string[] Maj3rds(string s)
+    string[] Maj3rds(string s)
     {
       string sDn, sBj, sFk;
       sDn = Dn(s);
@@ -238,7 +240,7 @@ namespace Kimonogram {
     }
 
 
-    static string[] Ennead(string s)
+    string[] Ennead(string s)
     {
       string[] a = {
         Bj(s),
@@ -256,7 +258,7 @@ namespace Kimonogram {
     }
 
 
-    static string[] Quiver(string s)
+    string[] Quiver(string s)
     {
       string[] a;
 
@@ -293,10 +295,9 @@ namespace Kimonogram {
     }
 
 
-    static void HeadStock(string signat, string sargam, string diadem)
+    void HeadStock(string signat, string sargam, string diadem)
     {
       string[] arrows = Quiver(sargam);
-
       string caption = string.Format("{0}-{1}-m{2}", signat, pitchfork, diadem);
 
       Console.WriteLine("\t{0}", caption);
@@ -306,6 +307,65 @@ namespace Kimonogram {
       }
     }
 
+
+    string[] Rummage(string signat)
+    {
+      int amount = digraphs.Count;
+      string[] keyRing = new string[amount];
+
+      uint i = 0;
+      foreach (string token in digraphs.Keys) {
+        keyRing[i] = token;
+        i += 1;
+      };
+
+      Array.Sort(keyRing);
+
+      Regex pattern = new Regex(signat);
+      StringBuilder bows = new StringBuilder("", 512);
+
+      foreach (string item in keyRing) {
+        if (pattern.IsMatch(item)) {
+          bows.AppendFormat("{0} ", item);
+        }
+      }
+
+      string tempura = bows.ToString().Trim();
+      string[] found = tempura.Split(' ');
+
+      return found;
+    }
+
+
+    void ChalkBoard(string[] signs) {
+      uint cycle = 0;
+
+      Console.Write("\t");
+
+      foreach (string item in signs) {
+        if (cycle % 7 == 0 ) {
+          Console.Write("\n");
+        }
+        Console.Write("\t{0}", item);
+        cycle += 1;
+      } 
+
+      Console.WriteLine(); 
+    }
+
+
+    void Contingency(string signat)
+    {
+      Console.WriteLine("\n\t{0} ?", signat);
+
+      string[] found = Rummage(signat);
+
+      if (found.Length > 0 && found[0] != String.Empty)
+      {
+        ChalkBoard(found);
+      }
+    }
+ 
 
     public void LatticeWork() {
       Console.WriteLine();
@@ -334,7 +394,7 @@ namespace Kimonogram {
           HeadStock(signat, sargam, diadem);
         }
         else {
-          Console.WriteLine("\n\t{0} ?", signat);
+          Contingency(signat);
         }
       }
     }
@@ -378,11 +438,10 @@ namespace Kimonogram {
 
 
     public void ShowMenu() {
-      uint cycle;
+      uint cycle = 0;
       int recs = digraphs.Count;
       string[] clave = new string[recs];
 
-      cycle = 0;
       foreach (string item in digraphs.Keys) {
         clave[cycle] = item;
         cycle += 1;
@@ -390,15 +449,8 @@ namespace Kimonogram {
 
       Array.Sort(clave);
 
-      cycle = 0;
-      foreach (string element in clave) {
-        if (cycle % 7 == 0 ) {
-          Console.Write("\n");
-        }
-        Console.Write("\t{0}", element);
-        cycle += 1;
-      }
-      Console.WriteLine("\n"); 
+      ChalkBoard(clave);
+      Console.WriteLine(); 
     }
 
 
