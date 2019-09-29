@@ -10,6 +10,8 @@ namespace Kimonogram {
 
     string pitchfork;
 
+    byte semitones = 36;
+
     Hashtable digraphs = new Hashtable() {
       {"j2", "vv zq dd dd ry wu dd uw dd sx dd qz "},
       {"j3", "vt dd tv xq dd ws dd uu dd sw dd qx "},
@@ -104,7 +106,7 @@ namespace Kimonogram {
 
     string Ziltch() {
       string mute, tacet;
-      mute = new string('_', 36);
+      mute = new string('_', semitones);
       tacet = mute.Replace("___", "__ ");
       return tacet;
     }
@@ -298,11 +300,11 @@ namespace Kimonogram {
     void HeadStock(string signat, string sargam, string diadem)
     {
       string[] arrows = Quiver(sargam);
-      string caption = string.Format("{0}-{1}-m{2}", signat, pitchfork, diadem);
+      string caption = String.Format("{0}-{1}-m{2}", signat, pitchfork, diadem);
 
-      Console.WriteLine("\t{0}", caption);
+      Console.WriteLine("\n\t{0}", caption);
 
-      for (int i = 0; i < arrows.Length; i++) {
+      for (byte i = 0; i < arrows.Length; i++) {
         Console.WriteLine("\t{0}", arrows[i]);
       }
     }
@@ -310,10 +312,10 @@ namespace Kimonogram {
 
     string[] Rummage(string signat)
     {
-      int amount = digraphs.Count;
+      ushort amount = (ushort) digraphs.Count;
       string[] keyRing = new string[amount];
 
-      uint i = 0;
+      ushort i = 0;
       foreach (string token in digraphs.Keys) {
         keyRing[i] = token;
         i += 1;
@@ -322,7 +324,7 @@ namespace Kimonogram {
       Array.Sort(keyRing);
 
       Regex pattern = new Regex(signat);
-      StringBuilder bows = new StringBuilder("", 512);
+      StringBuilder bows = new StringBuilder(512, 1024);
 
       foreach (string item in keyRing) {
         if (pattern.IsMatch(item)) {
@@ -330,7 +332,7 @@ namespace Kimonogram {
         }
       }
 
-      string tempura = bows.ToString().Trim();
+      string tempura = bows.ToString().TrimEnd();
       string[] found = tempura.Split(' ');
 
       return found;
@@ -338,7 +340,7 @@ namespace Kimonogram {
 
 
     void ChalkBoard(string[] signs) {
-      uint cycle = 0;
+      ushort cycle = 0;
 
       foreach (string item in signs) {
         if (cycle % 7 == 0 ) {
@@ -366,7 +368,6 @@ namespace Kimonogram {
  
 
     public void LatticeWork() {
-      Console.WriteLine();
       HeadStock("z0", Ziltch(), HoroLog()); 
     }
 
@@ -381,7 +382,7 @@ namespace Kimonogram {
         if (digraphs.ContainsKey(signat)) {
           datum.Insert(0, Retrieve(signat));
 
-          if (datum.Length < 36) {
+          if (datum.Length < semitones) {
             datum.Length = 0; // Clear
             datum.Insert(0, Ziltch());
             datum.Replace('_', '-');
@@ -392,7 +393,6 @@ namespace Kimonogram {
 
           sargam = datum.ToString();
 
-          Console.WriteLine();
           HeadStock(signat, sargam, diadem);
         }
         else {
@@ -442,8 +442,8 @@ namespace Kimonogram {
 
 
     public void ShowMenu() {
-      uint cycle = 0;
-      int recs = digraphs.Count;
+      ushort cycle = 0;
+      ushort recs = (ushort) digraphs.Count;
       string[] clave = new string[recs];
 
       foreach (string item in digraphs.Keys) {
