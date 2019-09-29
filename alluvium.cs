@@ -372,16 +372,18 @@ namespace Kimonogram {
 
 
     public void LatticeWork(string[] argot) {
-      StringBuilder datum;
+      StringBuilder datum = new StringBuilder(64, 128);
       string sargam, diadem;
+      diadem = HoroLog();
 
       foreach (string signat in argot)
       {
         if (digraphs.ContainsKey(signat)) {
-          datum = new StringBuilder(Retrieve(signat), 128);
+          datum.Insert(0, Retrieve(signat));
 
           if (datum.Length < 36) {
-            datum = new StringBuilder(Ziltch(), 128);
+            datum.Length = 0; // Clear
+            datum.Insert(0, Ziltch());
             datum.Replace('_', '-');
           }
           else {
@@ -389,7 +391,6 @@ namespace Kimonogram {
           }
 
           sargam = datum.ToString();
-          diadem = HoroLog();
 
           Console.WriteLine();
           HeadStock(signat, sargam, diadem);
@@ -397,6 +398,8 @@ namespace Kimonogram {
         else {
           Contingency(signat);
         }
+
+        datum.Remove(0, datum.Length);
       }
     }
 
