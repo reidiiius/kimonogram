@@ -10,7 +10,7 @@ namespace Kimonogram {
 
     string pitchfork;
 
-    const byte semitones = 36;
+    const byte decans = 36;
 
     Hashtable digraphs = new Hashtable() {
       {"j2", "vv zq dd dd ry wu dd uw dd sx dd qz "},
@@ -106,7 +106,7 @@ namespace Kimonogram {
 
     string Ziltch() {
       string mute, tacet;
-      mute = new string('_', semitones);
+      mute = new string('_', decans);
       tacet = mute.Replace("___", "__ ");
       return tacet;
     }
@@ -115,7 +115,7 @@ namespace Kimonogram {
     string HoroLog() {
       string serial;
       DateTime stamp = DateTime.Now;
-      serial = stamp.ToString("yyyyMMddTHHmmss");
+      serial = stamp.ToString("yyyyMMddTHHmmssfff");
       return serial;
     }
 
@@ -385,7 +385,7 @@ namespace Kimonogram {
         if (digraphs.ContainsKey(signat)) {
           datum.Insert(0, Retrieve(signat));
 
-          if (datum.Length < semitones) {
+          if (datum.Length < decans) {
             datum.Length = 0; // Clear
             datum.Insert(0, Ziltch());
             datum.Replace('_', '-');
