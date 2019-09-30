@@ -17,7 +17,6 @@ using Kimonogram;
       }
       else {
         Chordophone.LatticeWork(args);
-        Console.WriteLine();
       }
 
       Console.ResetColor();

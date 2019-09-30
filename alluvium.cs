@@ -10,7 +10,7 @@ namespace Kimonogram {
 
     string pitchfork;
 
-    byte semitones = 36;
+    const byte semitones = 36;
 
     Hashtable digraphs = new Hashtable() {
       {"j2", "vv zq dd dd ry wu dd uw dd sx dd qz "},
@@ -120,7 +120,7 @@ namespace Kimonogram {
     }
 
 
-    string PegBox(string s, int n) {
+    string PegBox(string s, byte n) {
       string head, tail;
       head = s.Substring(n, (s.Length - n));
       tail = s.Substring(0, (n + 2));
@@ -367,12 +367,15 @@ namespace Kimonogram {
     }
  
 
-    public void LatticeWork() {
+    public void LatticeWork()
+    {
       HeadStock("z0", Ziltch(), HoroLog()); 
+      Console.WriteLine();
     }
 
 
-    public void LatticeWork(string[] argot) {
+    public void LatticeWork(string[] argot)
+    {
       StringBuilder datum = new StringBuilder(64, 128);
       string sargam, diadem;
       diadem = HoroLog();
@@ -401,6 +404,8 @@ namespace Kimonogram {
 
         datum.Remove(0, datum.Length);
       }
+
+      Console.WriteLine();
     }
 
 
