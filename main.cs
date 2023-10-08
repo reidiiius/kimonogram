@@ -5,8 +5,7 @@ using Kimonogram;
   class JinBei {
 
     static void Main(string[] args) {
-      Console.BackgroundColor = ConsoleColor.Black;
-      Console.ForegroundColor = ConsoleColor.Green;
+      Console.ForegroundColor = ConsoleColor.Yellow;
 
       string tuning = "eadgbe";
 
